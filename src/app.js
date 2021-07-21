@@ -16,15 +16,19 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 8080;
 //Mongoose connection
-mongoose
-    .connect(process.env.MONGODB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-    })
-    .then(() => console.log("Connected to mongo server"))
-    .catch((err) => console.error(err));
+try {
+    mongoose
+        .connect(process.env.MONGODB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            useCreateIndex: true,
+        })
+        .then(() => console.log("Connected to mongo server"))
+} catch (err) {
+    console.error(err);
+}
+
 
 //Setting EJS view engine
 app.set("view engine", "ejs");
