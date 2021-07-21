@@ -519,9 +519,9 @@ const signUpMail = (data, protocol, host) => {
     });
     // const host = req.get("host");
     // const link = `http://localhost:8080/user/verify/${data._id}?tkn=${rand}`;
-    const link = `https://dsc-nits.herokuapp.com/user/verify/${data._id}?tkn=${rand}`;
+    // const link = `https://dscnitsilchar.herokuapp.com/user/verify/${data._id}?tkn=${rand}`;
     const PORT = process.env.PORT || 8080;
-    // const link = `${protocol}://${host}/user/verify/${data._id}?tkn=${rand}`;
+    const link = `${protocol}://${host}/user/verify/${data._id}?tkn=${rand}`;
     var transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -566,9 +566,9 @@ const forgotPassword = (data, protocol, host) => {
         type: "url-safe"
     });
     // const link = `http://localhost:8080/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
-    const link = `https://dsc-nits.herokuapp.com/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
+    // const link = `https://dscnitsilchar.herokuapp.com/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
     const PORT = process.env.PORT || 8080;
-    // const link = `${protocol}://${host}/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
+    const link = `${protocol}://${host}/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -613,8 +613,8 @@ const blogReportWarning = (blog, protocol, host) => {
         length: 100,
         type: "url-safe"
     });
-    // const link = `http://localhost:8080/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
-    const link = `https://dsc-nits.herokuapp.com/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
+    const link = `http://localhost:8080/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
+    // const link = `https://dscnitsilchar.herokuapp.com/user/verify/forgotpassword/${data._id}?tkn=${rand}`;
     const PORT = process.env.PORT || 8080;
     // const link = `${protocol}://${host}/blog/view/${blog._id}`;
 
@@ -668,7 +668,7 @@ const reportBlogToAdmin = (blog, protocol, host) => {
         },
     });
 
-    const link = `https://dsc-nits.herokuapp.com/blog/view/${blog._id}`;
+    const link = `${protocol}://${host}/blog/view/${blog._id}`;
 
     // filesArray = data.files.split("--");
 
