@@ -17,14 +17,14 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 //Mongoose connection
 mongoose
-  .connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
-  .then(() => console.log("Connected to mongo server"))
-  .catch((err) => console.error(err));
+    .connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+    })
+    .then(() => console.log("Connected to mongo server"))
+    .catch((err) => console.error(err));
 
 //Setting EJS view engine
 app.set("view engine", "ejs");
@@ -34,30 +34,32 @@ app.set("jwtTokenSecret", process.env.JWT_SECRET);
 
 //body parser
 app.use(
-  express.urlencoded({
-    extended: true,
-  })
+    express.urlencoded({
+        extended: true,
+    })
 );
 
 //setting up methods
 app.use(bodyParser.json());
 app.use(cookieParser("secret_passcode"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(
-  session({
-    secret: "secret_passcode",
-    cookie: {
-      maxAge: 4000000,
-    },
-    resave: false,
-    saveUninitialized: false,
-  })
+    session({
+        secret: "secret_passcode",
+        cookie: {
+            maxAge: 4000000,
+        },
+        resave: false,
+        saveUninitialized: false,
+    })
 );
 app.use(flash());
 
 app.use((req, res, next) => {
-  res.locals.flashMessages = req.flash();
-  next();
+    res.locals.flashMessages = req.flash();
+    next();
 });
 
 
@@ -80,16 +82,16 @@ app.use("/project", ProjectRoutes);
 app.use('/web-blitz', webBlitzRouter)
 
 app.get("/404", (req, res) => {
-  res.render("404-page");
+    res.render("404-page");
 });
 
 app.get("*", (req, res) => {
-  res.render("404-page");
+    res.render("404-page");
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.log("Server listening on port", PORT);
+    console.log("Server listening on port", PORT);
 });
 // const User = require('./models/user')
 
