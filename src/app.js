@@ -26,7 +26,6 @@ mongoose
     .then(() => console.log("Connected to mongo server"))
     .catch((err) => console.error(err));
 
-
 //Setting EJS view engine
 app.set("view engine", "ejs");
 
